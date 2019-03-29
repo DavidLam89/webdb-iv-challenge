@@ -21,4 +21,14 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id/shoppinglist',(req, res) => {
+    Recipes.getShoppingList(req.params.id)
+        .then(list => {
+            res.status(200).json(list);
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        });
+  })
+
 module.exports = router;
